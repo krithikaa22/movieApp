@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@400;500&family=Roboto:ital,wght@1,300&display=swap');
+
+*{
+    box-sizing: border-box;
+    margin: 0%;
+    padding: 0%;
+}
+body{
+    background: linear-gradient( #f8d0ad, #8f5e36);
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-size: 18px;
+    font-family: 'Kiwi Maru', serif;
+    font-weight: 400;
+}
+
+.btn{
+    opacity: 0.5;
+    color:#aa805a ;
+}
+
+/* add btn */
+#add-btn{
+    margin: 3rem auto;
+    width: 20%;
+    display: flex;
+    justify-content: center;
+}
+
+/* nav bar */
+.navbar{
+    background-color:#ffe7d1;
+}
+.nav-link{
+    font-size: 30px;
+    margin: 2rem;
+    color:#aa805a !important;
+}
+.nav-link:hover{
+    color:#cc9d73 !important;
+}
+
+/* view all movies */
+.container{
+    display: grid;
+    grid-template-columns: 33.3% 33.3% 33.3%;
+    text-align: center;
+}
+.col{
+    margin: 2rem;
+    background-color:hsla(29, 100%, 91%, 0.5);
+    border-radius: 12px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.movie-name{
+    font-size: 40px;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color:#805e42;
+    margin-bottom: 2rem;
+}
+.movie-rate-length{
+    display: flex;
+    width: 70%;
+    justify-content: space-between;
+    margin: 0.5rem auto;
+    font-size: 14px;
+    margin-bottom: 2rem;
+}
+.movie-genre, .movie-desc{
+    margin: 0.5rem 0;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    margin-bottom: 2rem;
+}
+.col span{
+    font-size: 20px;
+    margin-right: 1rem;
+    font-weight: 500;
+    font-family: 'Kiwi Maru', serif;
+    color:#805e42
+}
+
+/* create form */
+form{
+    background-color:hsla(29, 100%, 91%, 0.8);
+    border-radius: 12px;
+    padding: 5rem;
+    width: 70%;
+    margin: 3rem auto;
+    color:#4e331cbb;
+    font-family: 'Kiwi Maru', serif;
+    font-weight: 400;
+}
+input, select{
+    opacity: 0.5;
+}
+.form-group{
+    margin: 2rem;
+}
+#add-form-btn{
+    opacity: 1;
+}
+
+/* search */
+.search{
+    padding: 2rem;
+    margin: 2rem auto;
+    background-color: transparent;
+    width: 70%;
+    font-size: 18px;
+    font-family: 'Kiwi Maru', serif;
+    font-weight: 400;   
+}
+
+/* view */
+.view{
+    width: 70%;
+    margin: 5rem auto;
+    padding: 5rem;
+    text-align: center;
+}
+.view > .movie-rate-length{
+    width: 40%;
+}
+.movie-link{
+    display: flex;
+    width: 50%;
+    justify-content: space-between;
+    margin: auto;
+    margin-bottom: 4rem;
+}
+#review-heading{
+    font-size: 40px;
+    color:#805e42;
+    text-decoration: underline 3px #805e42;
+    letter-spacing: 3px;
+    margin-bottom: 2rem;
+}
+.review-form{
+    font-size: 30px;
+    width: 50%;
+    background-color: transparent;
+    margin: 0.5rem auto;
+    padding: 0;
+}
