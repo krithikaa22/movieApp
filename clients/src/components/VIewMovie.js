@@ -17,20 +17,18 @@ class Movies extends Component {
         this.setState({redirect: '/edit'})
     }
 
-    deleteHandler = (id) => {
-        this.props.deleteMovies(id);
+    deleteHandler = async (id) => {
+        let res = await this.props.deleteMovies(id);
         this.setState({redirect: '/'})
     }
-    reviewHandler = (id) => {
-       // return <Review></Review>
-    }
     render() {
+        if(this.state.redirect ) return(<Redirect to={this.state.redirect}></Redirect>)
         const {movies} = this.props.movies;
         console.log(movies)
         const stars = [];
         for(var i=0; i<movies[0].rate; i++) stars.push( <FontAwesomeIcon icon={faStar} style={{color: '#aa805a'}}></FontAwesomeIcon>)
         for(var i = movies[0].rate; i<5; i++) stars.push(<FontAwesomeIcon icon={faStar} style={{opacity:0.5}}></FontAwesomeIcon>)
-        if(this.state.redirect ) return(<Redirect to={this.state.redirect}></Redirect>)
+        if(this.props.movies.loading == false)
         return(
             <div className="col view">
                <div class="movie-name">
@@ -51,7 +49,6 @@ class Movies extends Component {
                 <div class="movie-link">
                     <Button onClick={this.editHandler.bind(this, movies[0]._id)} id="add-form-btn">Edit</Button>
                     <Button onClick={this.deleteHandler.bind( this, movies[0]._id)} id='add-form-btn'>Delete</Button>
-                    <Button onClick={this.reviewHandler.bind( this, movies[0]._id)} id='add-form-btn'>Add Review</Button>
                 </div>
                 <hr></hr>
                 <Review id={movies[0]._id}></Review>
@@ -64,8 +61,10 @@ class Movies extends Component {
                 </div>
             </div>
         )
+        else return null
     }
 }
+
 
 Movies.propTypes = {
     viewMovie: PropTypes.func.isRequired,
