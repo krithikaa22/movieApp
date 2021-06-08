@@ -1,5 +1,6 @@
 import {GET_MOVIES, ADD_MOVIES, DELETE_MOVIES, EDIT_MOVIES, MOVIES_LOADING, VIEW_MOVIE, SEARCH_MOVIES} from './types';
 import axios from 'axios';
+import { STATES } from 'mongoose';
 
 export const deleteMovies = (id) => dispatch => {
     console.log("action")
@@ -11,8 +12,8 @@ export const deleteMovies = (id) => dispatch => {
             type: DELETE_MOVIES,
             payload: id
          })
+         return 'done'
      })
-    return 'done';
 }
 
 export const getMovies = () => dispatch => {
@@ -40,6 +41,7 @@ export const editMovie = (movie) => dispatch => {
 }
 
 export const addMovies = (movie) => dispatch => {
+    dispatch(setMoviesLoading())
     axios 
      .post('/api/movies', movie)
      .then(res => {
@@ -49,10 +51,11 @@ export const addMovies = (movie) => dispatch => {
      })
      console.log(res) 
     })
+    return 'sone'
 }
 
 export const viewMovie = (id) =>dispatch => {
-    dispatch(setMoviesLoading());
+    dispatch(setMoviesLoading())
     axios
      .get(`/api/movies?id=${id}`)
      .then(res => {
@@ -61,7 +64,7 @@ export const viewMovie = (id) =>dispatch => {
              payload: res.data
          })
      })
-    return 'done';
+     return 'done';
 }
 
 export const updateReview = (id, data) => dispatch => {
@@ -75,7 +78,7 @@ export const updateReview = (id, data) => dispatch => {
          })
          console.log(res.data)
      })
-    return 'done'
+     return 'done'
 }
 
 export const searchMovie = (val) => dispatch => {
