@@ -12,6 +12,7 @@ export const deleteMovies = (id) => dispatch => {
             payload: id
          })
      })
+    return 'done';
 }
 
 export const getMovies = () => dispatch => {
@@ -51,6 +52,7 @@ export const addMovies = (movie) => dispatch => {
 }
 
 export const viewMovie = (id) =>dispatch => {
+    dispatch(setMoviesLoading());
     axios
      .get(`/api/movies?id=${id}`)
      .then(res => {
@@ -59,6 +61,7 @@ export const viewMovie = (id) =>dispatch => {
              payload: res.data
          })
      })
+    return 'done';
 }
 
 export const updateReview = (id, data) => dispatch => {
@@ -72,6 +75,7 @@ export const updateReview = (id, data) => dispatch => {
          })
          console.log(res.data)
      })
+    return 'done'
 }
 
 export const searchMovie = (val) => dispatch => {
