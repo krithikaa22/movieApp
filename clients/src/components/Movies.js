@@ -15,14 +15,15 @@ class Movies extends Component {
     componentDidMount() {
         this.props.getMovies()
     }
-    viewHandler = (id) => {
-        this.props.viewMovie(id)
-        this.setState({redirect: '/view'})
+   viewHandler = async (id) => {
+       var res = await this.props.viewMovie(id)
+       console.log(res)
+       if(res) this.setState({redirect: '/view'})
     }
     render() {
         const {movies} = this.props.movies;
-        console.log(movies)
         if(this.state.redirect !== null) return(<Redirect to='/view'></Redirect>)
+        if(this.props.movies.loading === false)
         return(
            <div>
                <Button href="/add" size="sm" color="dark" id="add-btn">Add</Button>
@@ -47,6 +48,7 @@ class Movies extends Component {
                 </Container>
            </div>
         )
+        else return null
     }
 }
 
