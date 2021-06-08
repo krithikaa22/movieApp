@@ -24,7 +24,7 @@ class AddMovies extends Component {
         this.setState({ [e.target.name]: e.target.value });
     }
 
-    submit = (e) => {
+    submit = async (e) => {
         e.preventDefault();
         const newMovie = {
             name: this.state.name,
@@ -34,12 +34,15 @@ class AddMovies extends Component {
             genre: this.state.genre,
             review: this.state.review
         }
-        this.props.addMovies(newMovie)
-        this.setState({redirect: '/'})
+        let res = await this.props.addMovies(newMovie)
+        if(res) {
+            this.setState({redirect: '/'})
+        }
     }
 
     render(){
-        if(this.state.redirect !== null) return(<Redirect to='/'></Redirect>)
+        if(this.props.movies.loading == false)
+    {     if(this.state.redirect !== null) return(<Redirect to='/'></Redirect>)
       return( 
         <Form onSubmit={this.submit}>
             <h1>Add Movie</h1>
@@ -78,8 +81,11 @@ class AddMovies extends Component {
             </FormGroup>
         </Form>
       )
-    }
+      }
+      else return null
+    } 
 }
+
 
 
 const mapStateToProps = (state) => {
